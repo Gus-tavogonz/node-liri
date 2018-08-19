@@ -1,0 +1,19 @@
+{
+  "name": "node-liri",
+  "version": "1.0.0",
+  "description": "",
+  "main": "liri.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^6.0.0",
+    "file-system": "^2.2.2",
+    "node-spotify-api": "^1.0.7",
+    "reddit": "^0.1.0",
+    "request": "^2.88.0"
+  }
+}
