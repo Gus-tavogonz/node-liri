@@ -2,7 +2,7 @@ require("dotenv").config();
 
 //Switch and operators
 
-//var spotify = require("spotify");
+var Spotify = require("node-spotify-api");
 
 var snooper = require("reddit-snooper");
 
@@ -32,6 +32,15 @@ function getMeThis(action, argument){
     argument = getArgument();
 
     switch(action){
+
+        case"spotify-this-song":
+        var songTitle = argument;
+        if (songTitle === ""){
+            getThatSong();
+        }else{ 
+        getSpotify(songTitle);
+        }
+        break
 
         case "my-reddit":
         getMyReddit();
@@ -84,6 +93,19 @@ request(queryUrl, function(error, response, body){
 });
 
 };
+
+
+//SPOTIFY SONGS!!!!
+
+function getSpotify(songTitle){
+    spotify.search({ type: 'track', query: songTitle }, function(err, data) {
+        if (err) {
+          return console.log('Error occurred: ' + err);
+        }
+       
+      console.log(data); 
+      });
+}
 
 
 //REDDIT GET!!
