@@ -13,7 +13,7 @@ var spotify = new Spotify(keys.spotify);
 
 var snooper = require("reddit-snooper");
 
-var print = console.log;
+//var print = console.log;
 
 var request = require("request");
 
@@ -81,7 +81,7 @@ request(queryUrl, function(error, response, body){
 
     if (!error && response.statusCode === 200) {
         var movie = JSON.parse(body);
-        print("Movie Title: " + movie.Title);
+        console.log("Movie Title: " + movie.Title);
         console.log("Release Year: " + movie.Year);
         console.log("IMDB Rating: " + movie.imdbRating);
         console.log("Rotten Tomatoes Rating: " + movie.Ratings[2].Value);
@@ -161,7 +161,7 @@ client.get("search/tweets", params, function(error, tweets, response) {
             var tweetInfo = tweets.statuses[i].text;
             console.log("TweetInfo: " + tweetInfo);
             var tweetTime = tweets.statuses[i].created_at;
-            console.log("This Tweet as created at: " + tweetTime)
+            console.log("This Tweet was created at: " + tweetTime)
        }
     }
 })
