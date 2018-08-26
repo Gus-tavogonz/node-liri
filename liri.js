@@ -3,7 +3,7 @@ require("dotenv").config();
 //Switch and operators
 var keys = require("./keys.js");
 
-var client = new Twitter (keys.twitter);
+
 
 var Spotify = require("node-spotify-api");
 
@@ -109,10 +109,48 @@ function getSpotify(songTitle){
         if (err) {
           return console.log('Error occurred: ' + err);
         }
-       
-        var song = JSON.stringfy(data);
-      console.log(song); 
+        
+        //console.log(data.tracks); 
+
+        var artistName = data.tracks.items[0].artists[0].name;
+        var songName = data.tracks.items[0].name;
+        //NOT ALL SONGS HAVE PREVIEW URL!!!!!
+        var previewName = data.tracks.items[0].preview_url;
+        //var song = console.log()
+
+        var albumName = data.tracks.items[0].album.name;
+        
+        console.log("This song is played by: " + artistName);
+        console.log("The name of this song is: " + songName);
+        console.log("You can preview this song by following this link: " + previewName);
+        console.log("This song is on the album: " + albumName);
+
       });
+}
+
+function getThatSong(){
+    spotify.search({ type: 'track', query: songTitle }, function(err, data) {
+        if (err) {
+          return console.log('Error occurred: ' + err);
+        }
+        
+        //console.log(data.tracks); 
+
+        var artistName = data.tracks.items[0].artists[0].name;
+        var songName = data.tracks.items[0].name;
+        //NOT ALL SONGS HAVE PREVIEW URL!!!!!
+        var previewName = data.tracks.items[0].preview_url;
+        //var song = console.log()
+
+        var albumName = data.tracks.items[0].album.name;
+        
+        console.log("This song is played by: " + artistName);
+        console.log("The name of this song is: " + songName);
+        console.log("You can preview this song by following this link: " + previewName);
+        console.log("This song is on the album: " + albumName);
+
+      });
+
 }
 
 
@@ -120,7 +158,7 @@ function getSpotify(songTitle){
 
 
 function getMyTweets(){
-
+    var client = new Twitter (keys.twitter);
 
 var params = {q: "GTavo3393", count: 20};
 client.get("search/tweets", params, function(error, tweets, response) {
