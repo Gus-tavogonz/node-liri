@@ -36,7 +36,7 @@ getMeThis(action, argument);
 function getMeThis(action, argument){
 
     //pushing argument into an array
-    argument = getArgument();
+    argument = process.argv.slice(3).join(" ");
 
     switch(action){
 
@@ -68,13 +68,7 @@ function getMeThis(action, argument){
     }
 }
 
-function getArgument(){
-    argumentArray = process.argv;
 
-    for (var i = 3; i < argumentArray.length; i++) {
-        argument += argumentArray[i];
-    }return argument;
-}
 
 
 ///// MOVIES FIRST!
