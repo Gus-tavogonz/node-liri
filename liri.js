@@ -1,8 +1,15 @@
 require("dotenv").config();
 
 //Switch and operators
+var keys = require("./keys.js");
+
+var client = new Twitter (keys.twitter);
 
 var Spotify = require("node-spotify-api");
+
+var Twitter = require("twitter");
+
+var spotify = new Spotify(keys.spotify);
 
 var snooper = require("reddit-snooper");
 
@@ -42,8 +49,8 @@ function getMeThis(action, argument){
         }
         break
 
-        case "my-reddit":
-        getMyReddit();
+        case "my-tweets":
+        getMyTweets();
         break;
 
         ////////////
@@ -103,26 +110,29 @@ function getSpotify(songTitle){
           return console.log('Error occurred: ' + err);
         }
        
-      console.log(data); 
+        var song = JSON.stringfy(data);
+      console.log(song); 
       });
 }
 
 
-//REDDIT GET!!
+//Twitter GET!!
 
 
-function getMyReddit(){
-snooper.watcher.getCommentWatcher()
-.on("comment", function(comment){
-    console.log("/u/" + comment.data.author + "posted a comment: " + comment.data.body )
-});
+function getMyTweets(){
+
+
+var params = {q: "GTavo3393", count: 20};
+client.get("search/tweets", params, function(error, tweets, response) {
+    if (!error){ //console.log(response)
+        for (var i = 0; i < tweets.statuses.length; i+=1){
+            var tweetInfo = tweets.statuses[i].text;
+            console.log("TweetInfo: " + tweetInfo);
+            var tweetTime = tweets.statuses[i].created_at;
+            console.log("This Tweet as created at: " + tweetTime)
+       }
+    }
+})
+
 }
 
-
-
-
-
-//function outputLog(logText){
- //   log.info(logtext);
-   // console.log(logText);
-//}
