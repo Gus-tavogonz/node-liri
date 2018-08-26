@@ -14,6 +14,9 @@
     "file-system": "^2.2.2",
     "node-spotify-api": "^1.0.7",
     "reddit": "^0.1.0",
-    "request": "^2.88.0"
+    "reddit-snooper": "^1.0.1",
+    "request": "^2.88.0",
+    "simple-node-logger": "^0.93.37",
+    "twitter": "^1.7.1"
   }
 }

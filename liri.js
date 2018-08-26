@@ -129,7 +129,7 @@ function getSpotify(songTitle){
 }
 
 function getThatSong(){
-    spotify.search({ type: 'track', query: songTitle }, function(err, data) {
+    spotify.search({ type: 'track', query: "The Ace Of Base" }, function(err, data) {
         if (err) {
           return console.log('Error occurred: ' + err);
         }
